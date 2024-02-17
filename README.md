@@ -29,3 +29,9 @@ As a bonus, touch works natively on RG353V, yay JELOS king of all custom FWs!.
 ## What's included
 
 The images contain basically the entire folder found at `build.JELOS-$DEVICE.aarch64/toolchain` after building JELOS, you get the toolchain for compiling C, C++ plus the sysroot used to install the dependencies. The sysroot includes all the headers, pkg-config files and shared objects needed to link against all the libraries that JELOS builds. That means that 
+
+## Development
+
+Included is the Dockerfile used to build the images as well as the script, both are usually added directly to a local copy of JELOS's repo.  
+Images are built with: `PROJECT=Rockchip DEVICE=RK3566 ARCH=aarch64 ./scripts/build_toolchain_docker_images`  
+So far I only tested RK3566 and RK3326.
