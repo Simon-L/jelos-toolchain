@@ -13,15 +13,15 @@ Some understanding of JELOS build system is needed but actually building JELOS i
 Once pulled, the images can be used as build environment for your own code. Consider a `main.cpp` file containing a basic hello world program or anything that doesn't depend on anything fancy, you can use the image like the following:  
 ```bash
 docker run --rm -ti -w /build -v $(pwd):/build \
-    jelos-toolchain:RK3566-aarch64-3 \
-    bash -c '/work/distribution/build.JELOS-RK3566.aarch64/toolchain/bin/aarch64-jelos-linux-gnueabi-g++ main.cpp -o main-RK3566'
+    jelos-toolchain:RK3566-aarch64 \
+    bash -c '/work/distribution/build.JELOS-RK3566.aarch64/toolchain/bin/aarch64-libreelec-linux-gnueabi-g++ main.cpp -o main-RK3566'
 ```
 
-As a more involved example, the included [Makefile](./jelos.make)  can be used to build an ImGui [example](https://github.com/ocornut/imgui/tree/master/examples/example_glfw_opengl3) (SDL2 + OpenGL3). Clone imgui and `cd` to its root folder, you may then build with this command:
+As a more involved example, the included [Makefile](./jelos.make) can be used to build an ImGui [example](https://github.com/ocornut/imgui/tree/master/examples/example_sdl2_opengl3) (SDL2 + OpenGL3). Clone imgui, copy `jelo.make` to its directory, `cd imgui` and you may then build the example using this command:
 ```bash
 docker run --rm -ti -w /build -v $(pwd):/build \
-    jelos-toolchain:RK3566-aarch64-3 \
-    make -C examples/example_sdl2_opengl3 -f jelos.make
+    jelos-toolchain:RK3566-aarch64 \
+    make -C examples/example_sdl2_opengl3 -f ../../jelos.make
 ```
 ![example](./toolchain_imgui_example.jpeg)  
 As a bonus, touch works natively on RG353V, yay JELOS king of all custom FWs!.
